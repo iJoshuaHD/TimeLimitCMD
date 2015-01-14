@@ -25,7 +25,6 @@ class Main extends PluginBase implements Listener{
 		$this->getServer()->getPluginManager()->registerEvents($this, $this);
 		$this->getLogger()->info(TextFormat::YELLOW . "TimeLimitCMD Initializing [...]");
 		$this->saveDefaultConfig();
-		$this->reloadConfig();
 		$this->createCMD();
 		
 		$this->cfg = new Config($this->getDataFolder(). "config.yml", Config::YAML);
@@ -39,7 +38,7 @@ class Main extends PluginBase implements Listener{
 		
 		$fileLocation = $this->getDataFolder() . "cmd.txt";
 		if(!file_exists($fileLocation)){
-			fopen($fileLocation,"w");
+			touch($fileLocation);
 		}
 
 	}
